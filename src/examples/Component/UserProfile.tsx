@@ -26,13 +26,17 @@ function UserProfile({ userId, data, loading }: UserProfileProps) {
     );
 
   return (
-    profileData && (
-      <section>
-        <h2>User Profile</h2>
-        <p>id: {profileData.id}</p>
-        <p>name: {profileData.name}</p>
-      </section>
-    )
+    <section>
+      <h2>User Profile</h2>
+      {profileData ? (
+        <>
+          <p>id: {profileData.id}</p>
+          <p>name: {profileData.name}</p>
+        </>
+      ) : (
+        <p>Whoops! No user data was found</p>
+      )}
+    </section>
   );
 }
 
