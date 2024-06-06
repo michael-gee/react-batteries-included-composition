@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
@@ -16,7 +16,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       <main>
         <div className="batteries-included-container">
           <UserProfile.Provider
-            userId={50}
+            userId={3}
             render={({ data, isFetching, error }) => {
               return (
                 <UserProfile title="<UserProfile /> (Batteries Included)">
