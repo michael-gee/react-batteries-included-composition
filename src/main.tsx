@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { UserProfile } from './examples/UserProfile';
+import isEmpty from 'lodash/isEmpty';
 import { profile } from './examples/api/data';
 
 import './main.css';
@@ -15,14 +16,14 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       <main>
         <div className="batteries-included-container">
           <UserProfile.Provider
-            userId={3}
+            userId={50}
             render={({ data, isFetching, error }) => {
               return (
-                <UserProfile>
+                <UserProfile title="<UserProfile /> (Batteries Included)">
                   {isFetching && <UserProfile.Loading />}
                   {error && <UserProfile.Error error={error} />}
                   {data && <UserProfile.Details id={data.id} name={data.name} />}
-                  {!data && !isFetching && !error && <UserProfile.Empty />}
+                  {isEmpty(data) && !isFetching && !error && <UserProfile.Empty />}
                 </UserProfile>
               );
             }}

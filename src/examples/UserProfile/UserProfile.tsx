@@ -12,7 +12,7 @@ interface UserProfileProps {
 const UserProfile = ({ title, children }: UserProfileProps) => {
   return (
     <section>
-      <h2>{title ?? 'User Profile (Batteries Included)'}</h2>
+      <h2>{title ?? '<UserProfile />'}</h2>
       {children}
     </section>
   );
