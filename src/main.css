@@ -15,13 +15,14 @@ main {
   margin: 0 auto;
 }
 
-.container {
+.hard-coded-container,
+.batteries-included-container {
   display: flex;
   width: 100%;
 }
 
-.container > section {
-  width: 50%;
+.hard-coded-container > section,
+.batteries-included-container section {
   min-height: 300px;
   display: flex;
   flex-direction: column;
@@ -32,9 +33,12 @@ main {
   margin: 32px;
   padding: 32px;
 }
-.container section:first-of-type > section {
-  border: 2px dashed green;
+
+.hard-coded-container > section {
+  width: 50%;
 }
-.container > section ul {
-  padding: 0;
+
+.batteries-included-container section {
+  width: 100%;
+  border: 2px dashed green;
 }

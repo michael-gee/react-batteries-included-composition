@@ -1,12 +1,11 @@
 import { useQuery } from '@tanstack/react-query';
 import { Profile } from './data';
 
-export function useUsers(params?: { enabled: boolean }) {
+export function useUsers() {
   return useQuery({
-    queryKey: [params?.enabled ? 'users' : 'users-disabled'],
+    queryKey: ['users'],
     queryFn: fetchUsers,
-    staleTime: Infinity,
-    enabled: params?.enabled
+    staleTime: Infinity
   });
 }
 
