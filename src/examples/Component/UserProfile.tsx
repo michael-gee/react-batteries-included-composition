@@ -1,16 +1,12 @@
-import { useProfile } from '../api/useProfile';
 import type { Profile } from '../api/data';
 
-interface UserProfileProps {
-  userId?: number;
+interface UserProfileComponentProps {
   data?: Profile;
+  error?: Error | null;
   loading?: boolean;
 }
 
-function UserProfile({ userId, data, loading }: UserProfileProps) {
-  const { data: asyncData, error } = useProfile(userId ?? -1);
-  const profileData = data ?? asyncData;
-
+function UserProfileComponent({ data, error, loading }: UserProfileComponentProps) {
   if (loading)
     return (
       <section>
@@ -28,10 +24,10 @@ function UserProfile({ userId, data, loading }: UserProfileProps) {
   return (
     <section>
       <h2>User Profile</h2>
-      {profileData ? (
+      {data ? (
         <>
-          <p>id: {profileData.id}</p>
-          <p>name: {profileData.name}</p>
+          <p>id: {data.id}</p>
+          <p>name: {data.name}</p>
         </>
       ) : (
         <p>Whoops! No user data was found</p>
@@ -40,5 +36,4 @@ function UserProfile({ userId, data, loading }: UserProfileProps) {
   );
 }
 
-export { UserProfile };
-export type { UserProfileProps };
+export default UserProfileComponent;

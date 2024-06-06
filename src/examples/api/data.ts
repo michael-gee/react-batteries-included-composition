@@ -45,3 +45,5 @@ export const profile: Profile = {
     bs: 'Example bs'
   }
 };
+
+export const users = [profile, profile, profile, profile, profile];

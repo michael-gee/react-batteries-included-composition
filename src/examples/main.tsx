@@ -2,11 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-import BatteriesIncludedUserProfile from './Component';
 import { UserProfile } from './Component';
 
-import { UserList, UserItem } from './Composition';
-import { profile } from './api/data';
+// import { UserList, User } from './Composition';
+import { profile } from './api/data'; // users
+// import type { Profile } from './api/data';
 
 import './main.css';
 
@@ -18,22 +18,10 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       <main>
         <div className="container">
           <UserProfile data={profile} />
-          <BatteriesIncludedUserProfile userId={3} />
+          <UserProfile userId={3} />
         </div>
 
-        <div className="container">
-          <UserList>
-            <UserItem />
-            <UserItem />
-            <UserItem />
-          </UserList>
-
-          <UserList>
-            <UserItem />
-            <UserItem />
-            <UserItem />
-          </UserList>
-        </div>
+        <div className="container">{/* Composition */}</div>
       </main>
 
       <ReactQueryDevtools />
