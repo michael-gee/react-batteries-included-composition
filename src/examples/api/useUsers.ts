@@ -1,14 +1,16 @@
-import { useSuspenseQuery } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
+import { Profile } from './data';
 
-export function useUsers() {
-  return useSuspenseQuery({
-    queryKey: ['users'],
+export function useUsers(params?: { enabled: boolean }) {
+  return useQuery({
+    queryKey: [params?.enabled ? 'users' : 'users-disabled'],
     queryFn: fetchUsers,
-    staleTime: Infinity
+    staleTime: Infinity,
+    enabled: params?.enabled
   });
 }
 
-export async function fetchUsers(): Promise<Response> {
+export async function fetchUsers(): Promise<Profile[]> {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let usersData: any;
 

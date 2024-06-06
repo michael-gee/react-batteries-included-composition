@@ -1,6 +1,6 @@
-import UserProfileComponent from './UserProfile';
-import { useProfile } from '../api/useProfile';
-import type { Profile } from '../api/data';
+import { UserProfileView } from './UserProfileView';
+import { useProfile } from '../../api/useProfile';
+import type { Profile } from '../../api/data';
 
 interface UserProfileProps {
   userId?: number;
@@ -9,7 +9,7 @@ interface UserProfileProps {
 
 const UserProfile = ({ userId, data }: UserProfileProps) => {
   const { data: profileData, isFetching, error } = useProfile(userId ?? -1);
-  return <UserProfileComponent data={data ?? profileData} loading={isFetching} error={error} />;
+  return <UserProfileView data={data ?? profileData} loading={isFetching} error={error} />;
 };
 
 export { UserProfile };

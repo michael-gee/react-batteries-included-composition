@@ -1,12 +1,12 @@
-import type { Profile } from '../api/data';
+import type { Profile } from '../../api/data';
 
-interface UserProfileComponentProps {
+interface UserProfileViewProps {
   data?: Profile;
   error?: Error | null;
   loading?: boolean;
 }
 
-function UserProfileComponent({ data, error, loading }: UserProfileComponentProps) {
+function UserProfileView({ data, error, loading }: UserProfileViewProps) {
   if (loading)
     return (
       <section>
@@ -36,4 +36,5 @@ function UserProfileComponent({ data, error, loading }: UserProfileComponentProp
   );
 }
 
-export default UserProfileComponent;
+export { UserProfileView };
+export type { UserProfileViewProps };
