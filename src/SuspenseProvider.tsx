@@ -1,14 +1,19 @@
-import { useSuspenseExample } from './demo/api/useSuspenseExample';
-import type { Example } from './demo/api/data';
+import { useSuspenseQuery } from '@tanstack/react-query';
+import { fetchExample } from './ExampleProvider';
+import type { ExampleData } from './ExampleProvider';
 import type { UseSuspenseQueryResult } from '@tanstack/react-query';
 
 interface SuspenseProviderProps {
   userId: number;
-  render: (data: UseSuspenseQueryResult<Example, Error>) => React.ReactNode;
+  render: (data: UseSuspenseQueryResult<ExampleData, Error>) => React.ReactNode;
 }
 
 const SuspenseProvider = ({ userId, render }: SuspenseProviderProps) => {
-  const query = useSuspenseExample(userId);
+  const query = useSuspenseQuery({
+    queryKey: ['suspense-user', userId],
+    queryFn: () => fetchExample(userId as number)
+  });
+
   return render(query);
 };
 
