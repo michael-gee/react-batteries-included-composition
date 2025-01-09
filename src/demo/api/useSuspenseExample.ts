@@ -1,16 +1,14 @@
-import { useQuery } from '@tanstack/react-query';
-import type { Profile } from './data';
+import { useSuspenseQuery } from '@tanstack/react-query';
+import type { Example } from './data';
 
-export function useProfile(id: number) {
-  return useQuery({
-    queryKey: ['user', id],
-    queryFn: () => fetchProfile(id as number),
-    staleTime: Infinity,
-    enabled: id > 0
+export function useSuspenseExample(id: number) {
+  return useSuspenseQuery({
+    queryKey: ['suspense-user', id],
+    queryFn: () => fetchExample(id as number)
   });
 }
 
-export async function fetchProfile(id: number): Promise<Profile> {
+export async function fetchExample(id: number): Promise<Example> {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let profileData: any;
 
