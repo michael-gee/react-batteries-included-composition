@@ -7,7 +7,7 @@ export const App = () => {
     <main>
       <div className="batteries-included-container">
         <Example.Provider
-          userId={3}
+          userId={Math.floor(Math.random() * 10) + 1}
           render={({ data, isFetching, error }) => {
             return (
               <Example title="<Example /> (Batteries Included)">
@@ -31,7 +31,7 @@ export const App = () => {
         }
       >
         <Example.SuspenseProvider
-          userId={3}
+          userId={Math.floor(Math.random() * 10) + 1}
           render={({ data, isFetching, error }) => {
             return (
               <div className="batteries-included-container">
